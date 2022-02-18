@@ -24,8 +24,8 @@ public class WebDriverManagerClass {
     }
 
     public static WebDriver getWebDriver() {
-//        String browser = System.getProperty("browser");
-        String browser = "chrome";
+        String browser = System.getProperty("browser");
+//        String browser = "chrome";
         if (webDriver == null) {
             new WebDriverManagerClass(browser);
         }
