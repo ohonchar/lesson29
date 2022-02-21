@@ -1,7 +1,13 @@
 package com.ex.ui;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class WebDriverManagerClass {
     private static WebDriver webDriver;
@@ -18,6 +24,9 @@ public class WebDriverManagerClass {
             case "ff":
                 webDriver = WebDriverManager.firefoxdriver().create();
                 break;
+            case "chrome_selenoid":
+                webDriver = selenoidChrome("http://localhost:4444/wd/hub");
+                break;
             default:
                 throw new RuntimeException("Incorrect browser name");
         }
@@ -30,5 +39,25 @@ public class WebDriverManagerClass {
             new WebDriverManagerClass(browser);
         }
         return webDriver;
+    }
+
+    private static RemoteWebDriver selenoidChrome(String serverUrl) {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setCapability("enableVNC", true);
+        chromeOptions.setCapability("enableVideo", false);
+        chromeOptions.setCapability("browserVersion", "89.0");
+        chromeOptions.setCapability("selenoid:options", new HashMap<String, Object>() {
+            {
+                put("sessionTimeout", "2m");
+            }
+        });
+
+        RemoteWebDriver driver = null;
+        try {
+            driver = new RemoteWebDriver(new URL(serverUrl), chromeOptions);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return driver;
     }
 }
