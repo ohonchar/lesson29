@@ -45,7 +45,7 @@ public class WebDriverManagerClass {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setCapability("enableVNC", true);
         chromeOptions.setCapability("enableVideo", false);
-        chromeOptions.setCapability("browserVersion", "89.0");
+        chromeOptions.setCapability("browserVersion", "97.0");
         chromeOptions.setCapability("selenoid:options", new HashMap<String, Object>() {
             {
                 put("sessionTimeout", "2m");
