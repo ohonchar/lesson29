@@ -25,7 +25,7 @@ public class WebDriverManagerClass {
                 webDriver = WebDriverManager.firefoxdriver().create();
                 break;
             case "chrome_selenoid":
-                webDriver = selenoidChrome("http://selenoid:4444/wd/hub");
+                webDriver = selenoidChrome("http://172.19.0.2:4444/wd/hub");
                 break;
             default:
                 throw new RuntimeException("Incorrect browser name");
