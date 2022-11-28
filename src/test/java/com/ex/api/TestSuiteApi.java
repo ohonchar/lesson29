@@ -24,5 +24,6 @@ public class TestSuiteApi {
             .then()
             .extract().response();
         System.out.println("Project created " + response.asString());
+
     }
 }
