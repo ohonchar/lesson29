@@ -13,9 +13,9 @@ import static io.restassured.RestAssured.given;
 public class TestSuiteApi {
     @Test
     public void createProjectWithModel() {
-        RestAssured.baseURI = "https://testraillesson2.testrail.io";
+        RestAssured.baseURI = "https://pukalo.testrail.io/";
         Response response = given()
-            .auth().preemptive().basic("testraillesson2@mailforspam.com", "hillelpass1")
+            .auth().preemptive().basic("qwertyasd@mailforspam.com", "Gol19121211_nvbg")
             .contentType(ContentType.JSON)
             .queryParam("/api/v2/add_project")
             .body(new CreateProjectModel().createProjectWithoutSuiteMode(new Timestamp(System.currentTimeMillis())))
