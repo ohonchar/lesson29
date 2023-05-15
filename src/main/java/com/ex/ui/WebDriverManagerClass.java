@@ -48,7 +48,7 @@ public class WebDriverManagerClass {
         chromeOptions.setCapability("browserVersion", "97.0");
         chromeOptions.setCapability("selenoid:options", new HashMap<String, Object>() {
             {
-                put("sessionTimeout", "2m");
+                put("sessionTimeout", "3m");
             }
         });
 
